@@ -82,7 +82,7 @@ ActionMailer::Base.smtp_settings = {
   :port           => "25",
   :authentication => :plain,
   :user_name      => ENV['app42949118@heroku.com'],
-  :password       => ENV['Ael3ole!'],
+  :password       => ENV['6xtdktpt6235'],
   :domain         => ENV['heroku.com']
 }
 end
