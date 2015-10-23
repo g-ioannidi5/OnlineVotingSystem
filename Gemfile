@@ -46,7 +46,7 @@ group :development, :production, :test do
   gem 'devise'
 end
   #Boostrap 2.3.2
-gem 'bootstrap-sass', '~> 2.3.2'
+gem 'bootstrap-sass'
 gem "nested_form", :git => "git://github.com/ryanb/nested_form.git"
 gem 'hirb'
 gem 'groupdate', '~> 2.1.1'
