@@ -6,7 +6,7 @@ Rails.application.initialize!
 
 ActionMailer::Base.smtp_settings = {
   :address              => "smtp.sendgrid.net",
-  :domain               => DOMAIN,
+  :domain               => onlinevotingsystem.net,
   :user_name            => ENV['app42949118@heroku.com'],
   :password             => ENV['6xtdktpt6235'],
   :authentication       => "plain",
