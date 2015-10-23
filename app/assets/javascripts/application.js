@@ -12,8 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.turbolinks
-//= require turbolinks
 // Loads all Bootstrap javascripts
 //= require bootstrap
 //= require bootstrap-scrollspy
