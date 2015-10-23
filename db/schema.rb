@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150609174357) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "access_codes", force: :cascade do |t|
     t.string   "code"
     t.date     "valid_until"
@@ -22,8 +25,8 @@ ActiveRecord::Schema.define(version: 20150609174357) do
     t.integer  "subject_id"
   end
 
-  add_index "access_codes", ["lecturer_id"], name: "index_access_codes_on_lecturer_id"
-  add_index "access_codes", ["subject_id"], name: "index_access_codes_on_subject_id"
+  add_index "access_codes", ["lecturer_id"], name: "index_access_codes_on_lecturer_id", using: :btree
+  add_index "access_codes", ["subject_id"], name: "index_access_codes_on_subject_id", using: :btree
 
   create_table "histories", force: :cascade do |t|
     t.string   "answer"
@@ -34,8 +37,8 @@ ActiveRecord::Schema.define(version: 20150609174357) do
     t.integer  "question_id"
   end
 
-  add_index "histories", ["poll_id"], name: "index_histories_on_poll_id"
-  add_index "histories", ["question_id"], name: "index_histories_on_question_id"
+  add_index "histories", ["poll_id"], name: "index_histories_on_poll_id", using: :btree
+  add_index "histories", ["question_id"], name: "index_histories_on_question_id", using: :btree
 
   create_table "lecturers", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -56,8 +59,8 @@ ActiveRecord::Schema.define(version: 20150609174357) do
     t.datetime "updated_at"
   end
 
-  add_index "lecturers", ["email"], name: "index_lecturers_on_email", unique: true
-  add_index "lecturers", ["reset_password_token"], name: "index_lecturers_on_reset_password_token", unique: true
+  add_index "lecturers", ["email"], name: "index_lecturers_on_email", unique: true, using: :btree
+  add_index "lecturers", ["reset_password_token"], name: "index_lecturers_on_reset_password_token", unique: true, using: :btree
 
   create_table "poll_histories", force: :cascade do |t|
     t.integer  "poll_id"
@@ -79,8 +82,8 @@ ActiveRecord::Schema.define(version: 20150609174357) do
     t.integer  "subject_id"
   end
 
-  add_index "polls", ["lecturer_id"], name: "index_polls_on_lecturer_id"
-  add_index "polls", ["subject_id"], name: "index_polls_on_subject_id"
+  add_index "polls", ["lecturer_id"], name: "index_polls_on_lecturer_id", using: :btree
+  add_index "polls", ["subject_id"], name: "index_polls_on_subject_id", using: :btree
 
   create_table "questions", force: :cascade do |t|
     t.text     "question"
@@ -107,8 +110,8 @@ ActiveRecord::Schema.define(version: 20150609174357) do
     t.string   "chart_style"
   end
 
-  add_index "questions", ["lecturer_id"], name: "index_questions_on_lecturer_id"
-  add_index "questions", ["poll_id"], name: "index_questions_on_poll_id"
+  add_index "questions", ["lecturer_id"], name: "index_questions_on_lecturer_id", using: :btree
+  add_index "questions", ["poll_id"], name: "index_questions_on_poll_id", using: :btree
 
   create_table "students", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -130,8 +133,8 @@ ActiveRecord::Schema.define(version: 20150609174357) do
     t.integer  "current_question"
   end
 
-  add_index "students", ["email"], name: "index_students_on_email", unique: true
-  add_index "students", ["reset_password_token"], name: "index_students_on_reset_password_token", unique: true
+  add_index "students", ["email"], name: "index_students_on_email", unique: true, using: :btree
+  add_index "students", ["reset_password_token"], name: "index_students_on_reset_password_token", unique: true, using: :btree
 
   create_table "subjects", force: :cascade do |t|
     t.string   "code"
@@ -141,7 +144,7 @@ ActiveRecord::Schema.define(version: 20150609174357) do
     t.datetime "updated_at",  null: false
   end
 
-  add_index "subjects", ["lecturer_id"], name: "index_subjects_on_lecturer_id"
+  add_index "subjects", ["lecturer_id"], name: "index_subjects_on_lecturer_id", using: :btree
 
   create_table "whitelists", force: :cascade do |t|
     t.string   "email"
