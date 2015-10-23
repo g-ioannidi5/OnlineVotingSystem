@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   match 'view_responses', :to => 'questions#view_responses', :via => :all
   match 'poll_questions', :to => 'polls#poll_questions', :via => :all
   match '*unmatched_route', :to => 'ovs_core#page_not_found', :via => :all
+  match "/confirmation" => "confirmations#confirm"
 
 
   # The priority is based upon order of creation: first created -> highest priority.
