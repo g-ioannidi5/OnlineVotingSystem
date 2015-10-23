@@ -1,0 +1,74 @@
+
+  <%= form_for(@question) do |f| %>
+    <% if @question.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@question.errors.count, "error") %> prohibited this question from being saved:</h2>
+          <ul>
+            <% @question.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <div class="field">
+      <%= f.label :poll_id %><br>
+      <%= f.collection_select(:poll_id,  @polls_for_select, :id, :name) %>
+    </div>
+    <div class="field">
+      <%= f.label :question %><br>
+      <%= f.text_area :question, :required => true %>
+    </div>
+    <div class="field">
+      <%= f.label :answer1 %><br>
+      <%= f.text_field :answer1, :required => true %>
+    </div>
+    <div class="field">
+      <%= f.label :answer2 %><br>
+      <%= f.text_field :answer2, :required => true %>
+    </div>
+    <div class="field">
+      <%= f.label :answer3 %><br>
+      <%= f.text_field :answer3 %>
+    </div>
+    <div class="field">
+      <%= f.label :answer4 %><br>
+      <%= f.text_field :answer4 %>
+    </div>
+    <div class="field">
+      <%= f.label :answer5 %><br>
+      <%= f.text_field :answer5 %>
+    </div>
+    <div class="field">
+      <%= f.label :answer6 %><br>
+      <%= f.text_field :answer6 %>
+    </div>
+     <div class="field">
+        <%= f.label :chart_style %><br>
+        <%= f.select(:chart_style, ["Pie Chart", "Bar Chart"]) %>
+      </div>
+    <% if lecturer_signed_in? %>
+      <div class="field" style="display: none;">
+        <%= f.label :lecturer_id %><br>
+        <%= f.collection_select(:lecturer_id, [current_lecturer], :id, :email) %>
+      </div>
+    <% end %>
+
+    <% if defined?(@access_code) %>
+      <% if student_signed_in? %>
+        <div class="field" style="display: none;">
+          <%= f.label :lecturer_id %><br>
+          <%= f.select(:lecturer_id, [@access_code.lecturer_id]) %>
+        </div>
+      <% end %>
+    <% end %>
+    <% if student_signed_in? %>
+      <div class="field" style="display: none;">
+        <%= f.label :access_code %><br>
+        <%= f.select(:access_code, [@access_code.code]) %>
+      </div>
+    <% end %>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
+

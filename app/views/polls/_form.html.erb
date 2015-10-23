@@ -1,0 +1,77 @@
+
+<%= form_for(@poll) do |f| %>
+    <% if @poll.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@poll.errors.count, "error") %> prohibited this poll from being saved:</h2>
+        <ul>
+          <% @poll.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :name %><br>
+      <%= f.text_field :name, :required => true%>
+    </div>
+
+    <% if defined?(lecturer_signed_in?) %>
+      <% if lecturer_signed_in? %>
+        <div class="field" style="display: none;">
+          <%= f.label :lecturer_id %><br>
+          <%= f.collection_select(:lecturer_id, [current_lecturer], :id, :email) %>
+        </div>
+      <% end %>
+    <% end %>
+
+    <% if defined?(@access_code.code) %>
+      <% if student_signed_in? %>
+        <div class="field"  style="display: none;">
+          <%= f.label :lecturer_id %><br>
+          <%= f.collection_select(:lecturer_id, [@access_code.lecturer], :id, :email) %>
+        </div>
+      <% end %>
+      <% end %>
+
+    <% if defined?(lecturer_signed_in?) %>
+      <% if lecturer_signed_in? %>
+        <div class="field" >
+          <%= f.label :subject_id %><br>
+          <%= f.collection_select(:subject_id, Subject.where('lecturer_id = ?', current_lecturer.id), :id, :title, {:class=>'select-style'}) %>
+        </div>
+      <% end %>
+    <% end %>
+
+    <% if defined?(@access_code.code) %>
+      <% if student_signed_in? %>
+        <div class="field" style="display: none;">
+            <%= f.label :subject_id %><br>
+            <%= f.collection_select(:subject_id, Subject.where('id = ?', @access_code.subject), :id, :title) %>
+        </div>
+      <% end %>
+    <% end %>
+     
+    <div class="field">
+      <%= f.label :poll_date %><br>
+      <%= f.date_select :poll_date, {:class=>'select-style'} %>
+    </div>
+
+    <% if defined?(@access_code.code) %>
+      <% if student_signed_in? %>
+        <div class="field" style="display: none;">
+          <%= f.label :access_code %><br>
+          <%= f.select(:access_code, [@access_code.code]) %>
+        </div>
+
+        <div class="field" style="display: none;">
+          <%= f.label :access_code_lecturer %><br>
+          <%= f.collection_select(:access_code_lecturer, [@access_code.lecturer], :id, :email) %>
+        </div>
+      <% end %>
+    <% end %>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>

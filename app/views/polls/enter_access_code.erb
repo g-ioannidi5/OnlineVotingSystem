@@ -1,0 +1,20 @@
+<div  id = "signup">  
+<% if flash[:alert] %>
+    <p class="alert alert-danger"><%= flash[:alert] %></p>
+  <% end %>
+  <% if flash[:notice] %>
+    <p class="alert alert-success"><%= flash[:notice] %></p>
+  <% end %>
+<% if student_signed_in? %>
+	
+	<p>Sign in or sign up to Create a Poll</p>
+    <button>  <%= link_to('Sign in', new_lecturer_session_path)  %> </button>
+    <button> <%= link_to('Sign up', new_lecturer_registration_path)  %> </button>
+    <%= form_tag(:controller => 'polls', :action =>'check_code') do %>
+      <p> or Enter Access Code: <%= text_field :code, :code%>
+      <%= submit_tag %>
+    <%end %>
+ <% else %>
+<p> Please sign in </p> <%= button_to('Sign in', new_student_session_path, {class: 'btn btn-large btn-primary'}) %>
+<% end %>   
+</div>

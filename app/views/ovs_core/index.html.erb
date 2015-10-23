@@ -1,0 +1,137 @@
+<html>
+  <body>
+  <% if flash[:alert] %>
+    <p class="alert alert-danger"><%= flash[:alert] %></p>
+  <% end %>
+  <% if flash[:notice] %>
+    <p class="alert alert-success"><%= flash[:notice] %></p>
+  <% end %>
+    <!-- Carousel
+    ================================================== -->
+    <div id="myCarousel" class="carousel slide">
+      <div class="carousel-inner">
+        <div class="item active">
+         <%= image_tag"slide-01.jpg"%>
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Lecturers</h1>
+              <p class="lead">Lecturers are able create polls and questions for more interactive lectures.</p>
+              
+                <%= button_to('Sign up for lecturers', new_lecturer_registration_path, {class: 'btn btn-large btn-primary'} ) %> 
+            </div>
+          </div>
+        </div>
+        <div class="item">
+         <%= image_tag"slide-02.jpg"  %>
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Students</h1>
+              <p class="lead">Students are able to vote and download the charts provided at the end of each question.</p>
+                <%= button_to('Sign up for students', new_student_registration_path, {class: 'btn btn-large btn-primary'} ) %> 
+            </div>
+          </div>
+        </div>
+        <div class="item">
+         <%= image_tag"slide-03.jpg"%>
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Access Codes</h1>
+              <p class="lead">Students can also create polls and question if a valid access code from a lecturer is provided.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+    </div><!-- /.carousel -->
+
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+
+    <div class="container marketing">
+
+      <!-- Three columns of text below the carousel -->
+      <div class="row">
+        <div class="span4">
+          <img class="img-circle" data-src="holder.js/140x140">
+          <h2>Anonymity</h2>
+          <p>Lecturers cannot know who answered what. The web application is made for making the lectures more interesting.</p>
+        </div><!-- /.span4 -->
+        <div class="span4">
+          <img class="img-circle" data-src="holder.js/140x140">
+          <h2>Charts</h2>
+          <p>The system provides charts with the response of each question. THe charts can be downloaded as PDF, JPEG, SVG. </p>
+        </div><!-- /.span4 -->
+        <div class="span4">
+          <img class="img-circle" data-src="holder.js/140x140">
+          <h2>Accessible from everywhere</h2>
+          <p>The system is developed as a web-application, so no any addition deviced required.</p>
+        </div><!-- /.span4 -->
+      </div><!-- /.row -->
+
+      <!-- START THE FEATURETTES -->
+
+      <hr class="featurette-divider">
+
+      <div class="featurette">
+        <%= image_tag"web-browser-support.jpg"%>
+        <h2 class="featurette-heading">Access from a laptop device</h2>
+        <p class="lead">The web application was implemented and tested with the 5 most popular web browsers: Internet Explorer, Chrome, Safari, Firefox and Opera.</p>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="featurette">
+      <%= image_tag"smartphone-comparison-2013-2.jpg"%>
+        
+        <h2 class="featurette-heading">Access from a smartphone device</h2>
+        <p class="lead">The system automatically detects smartphone device and adjusts the screen to fit in phone's screen. Works with every mobile phone with web browser application.</p>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="featurette">
+      <%= image_tag"images.jpeg"%>
+        
+        <h2 class="featurette-heading">Access from a tablet device</h2>
+        <p class="lead">The system can also detect tablet devices and adjust the screen to the tablet's screen. Tested on iPad4 and Nexus 7. </p>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <!-- /END THE FEATURETTES -->
+
+
+
+    </div><!-- /.container -->
+
+
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap-transition.js"></script>
+    <script src="../js/bootstrap-alert.js"></script>
+    <script src="../js/bootstrap-modal.js"></script>
+    <script src="../js/bootstrap-dropdown.js"></script>
+    <script src="../js/bootstrap-scrollspy.js"></script>
+    <script src="../js/bootstrap-tab.js"></script>
+    <script src="../js/bootstrap-tooltip.js"></script>
+    <script src="../js/bootstrap-popover.js"></script>
+    <script src="../js/bootstrap-button.js"></script>
+    <script src="../js/bootstrap-collapse.js"></script>
+    <script src="../js/bootstrap-carousel.js"></script>
+    <script src="../js/bootstrap-typeahead.js"></script>
+    <script>
+      !function ($) {
+        $(function(){
+          // carousel demo
+          $('#myCarousel').carousel()
+        })
+      }(window.jQuery)
+    </script>
+    <script src="../js/holder/holder.js"></script>
+  </body>
+</html>

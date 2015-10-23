@@ -1,0 +1,87 @@
+
+  <% if flash[:alert] %>
+    <p class="alert alert-danger"><%= flash[:alert] %></p>
+  <% end %>
+  <% if flash[:notice] %>
+    <p class="alert alert-success"><%= flash[:notice] %></p>
+  <% end %>
+
+  <h1>Listing Questions</h1>
+<div class="table-responsive">
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Question</th>
+        <th>A1</th>
+        <th>A2</th>
+        <th>A3</th>
+        <th>A4</th>
+        <th>A5</th>
+        <th>A6</th>
+        <th>R1</th>
+        <th>R2</th>
+        <th>R3</th>
+        <th>R4</th>
+        <th>R5</th>
+        <th>R6</th>
+        <th>Total</th>
+        <th>Poll</th>
+        <th>Poll ID</th>
+        <th>Status</th>
+        <th>Show</th>
+        <th>Edit</th>
+        <th>Destroy</th>
+        <th>Activate</th>
+        <th>Deactivate</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <% @questions.each do |question| %>
+        <tr>
+          <td><%= question.id %></td>
+          <td><%= question.question %></td>
+          <td><%= question.answer1 %></td>
+          <td><%= question.answer2 %></td>
+          <td><%= question.answer3 %></td>
+          <td><%= question.answer4 %></td>
+          <td><%= question.answer5 %></td>
+          <td><%= question.answer6 %></td>
+          <td><%= question.response1 %></td>
+          <td><%= question.response2 %></td>
+          <td><%= question.response3 %></td>
+          <td><%= question.response4 %></td>
+          <td><%= question.response5 %></td>
+          <td><%= question.response6 %></td>
+          <td><%= question.total_responses %></td>
+          <td><%= question.poll.name %></td>
+          <td><%= question.poll.id %></td>
+          <% if question.status == 1 %>
+            <td> On </td>
+          <% elsif question.status == 0 || question.status = nil || question.status = ""%>
+            <td> Off </td>
+          <% end %>
+
+          <td><%= link_to 'Show', question %></td>
+
+          <% if question.poll.access_code == @access_code %>
+            <td><%= link_to 'Edit', edit_question_path(question) %></td>
+            <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td> <%= link_to "Activate", {:controller => "questions", :action => "enable_question", :button => "Activate_index", :question_param => question.id} %> </td>
+            <td> <%= link_to "Deactivate", {:controller => "questions", :action => "enable_question", :button => "Deactivate_index", :question_param => question.id} %> </td>
+          <% elsif lecturer_signed_in? %>
+            <% if question.poll.lecturer_id == current_lecturer.id || question.poll.access_code_lecturer ==  current_lecturer.id %>
+              <td><%= link_to 'Edit', edit_question_path(question) %></td>
+              <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td> <%= link_to "Activate", {:controller => "questions", :action => "enable_question", :button => "Activate_index", :question_param => question.id} %> </td>
+              <td> <%= link_to "Deactivate", {:controller => "questions", :action => "enable_question", :button => "Deactivate_index", :question_param => question.id} %> </td>
+            <% end %>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+  <br>
+  <%= link_to 'New Question', new_question_path %>

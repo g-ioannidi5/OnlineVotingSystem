@@ -1,0 +1,101 @@
+<div  id = "vote">  
+<% if flash[:alert] %>
+    <p class="alert alert-danger"><%= flash[:alert] %></p>
+  <% end %>
+  <% if flash[:notice] %>
+    <p class="alert alert-success"><%= flash[:notice] %></p>
+  <% end %>
+<div id="outer" style="width:100%">
+<div id="inner">
+<li>
+	<ul>
+		<h1><%=  @question.question %></h1>
+	</ul> 
+	<%@current_question = @question.id %>
+	<%@current_position = @current_position.to_i + 1 %>
+	<%@current_poll = @question.poll_id %>
+	<%= form_tag url_for(:controller => 'questions', :action =>'submit_answer', question_param: @question.id, current_position: @current_position, current_poll: @current_poll) do %>
+
+		<% if @question.answer1 != "" %>
+			<div class="radio">
+				<input type="radio" name="radio" id="radio1" value="1" class="radio" checked style="display:none;"/>
+				<label for="radio1" class="radio"><%=@question.answer1%></label>
+			</div>	
+		<% end %>
+
+		<% if @question.answer2 != "" %>
+			<div class="radio">
+				<input type="radio" name="radio" id="radio2" value="2" class="radio" style="display:none;"/>
+				<label for="radio2" class="radio"><%=@question.answer2%></label>
+			</div>
+		<% end %>
+
+		<% if @question.answer3 != "" %>
+			<div class="radio"> 
+				<input type="radio" name="radio" id="radio3" value="3" class="radio" style="display:none;"/>
+				<label for="radio3" class="radio"><%=@question.answer3%></label>
+			</div>
+	
+		<% end %>
+
+		<% if @question.answer4 != "" %>
+			<div class="radio"> 
+				<input type="radio" name="radio" id="radio4" value="4" class="radio" style="display:none;"/>
+				<label for="radio4" class="radio"><%=@question.answer4%></label>
+			</div>	
+		<% end %>
+
+		<% if @question.answer5 != "" %>
+			<div class="radio"> 
+				<input type="radio" name="radio" id="radio5" value="5" class="radio" style="display:none;"/>
+				<label for="radio5" class="radio"><%=@question.answer5%></label>
+			</div>
+		<% end %>
+
+		<% if @question.answer6 != "" %>
+			<div class="radio"> 
+				<input type="radio" name="radio" id="radio6" value="6" class="radio" style="display:none;"/>
+				<label for="radio6" class="radio"><%=@question.answer6%></label>
+			</div>
+		<% end %>
+		<br>
+		<br>
+		<br> 
+		<br>
+		<%if student_signed_in? %>
+			<%= submit_tag "Submit", class: "btn btn-default" %> <%= link_to 'Back', vote_path %>
+		<% end %>
+	<% end %>
+</li>
+<% if defined?(@access_code.code) %>
+	<% if @question.poll.access_code == @access_code.code %>
+		<%= link_to 'Edit', edit_question_path(@question) %>
+		<%= link_to 'Back', questions_path %>
+		<%= form_tag url_for(:controller => 'questions', :action => 'view_responses', question_param: @current_question, poll_param: @current_poll) do %>
+           	<input type="Submit" name="button" id="view_responses" value="View Responses" class="button"/>
+        <% end %>
+		<%= form_tag url_for(:controller => 'questions', :action => 'enable_question', question_param: @current_question) do %>
+           	<input type="Submit" name="button" id="activate" value="Activate" class="button"/>
+           	<input type="Submit" name="button" id="deactivate" value="Deactivate" class="button"/>
+           	<input type="Submit" name="button" id="reset" value="Reset" class="button"/>
+           	<input type="Submit" name="button" id="downloadable" value="Enable" class="button"/>
+           	<input type="Submit" name="button" id="undownloadable" value="Disable" class="button"/>
+        <% end %>
+	<% end %>
+<% elsif lecturer_signed_in? %>
+	<% if @question.poll.lecturer_id == current_lecturer.id || @question.poll.access_code_lecturer ==  current_lecturer.id %>
+		<%= link_to 'Edit', edit_question_path(@question) %>
+		<%= link_to 'Back', questions_path %>
+		<%= form_tag url_for(:controller => 'questions', :action => 'view_responses', question_param: @current_question, poll_param: @current_poll) do %>
+        	<input type="Submit" name="button" id="view_responses" value="View Responses" class="button"/>
+    	<% end %>
+		<%= form_tag url_for(:controller => 'questions', :action => 'enable_question', question_param: @current_question) do %>
+          		<input type="Submit" name="button" id="activate" value="Activate" class="button"/>
+           		<input type="Submit" name="button" id="deactivate" value="Deactivate" class="button"/>
+           		<input type="Submit" name="button" id="reset" value="Reset" class="button"/>
+       	<% end %>
+    <% end %>
+<% end %>
+</div>
+</div>
+</div>

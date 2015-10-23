@@ -1,0 +1,45 @@
+<div  id = "signup"> 
+<% if flash[:alert] %>
+    <p class="alert alert-danger"><%= flash[:alert] %></p>
+  <% end %>
+  <% if flash[:notice] %>
+    <p class="alert alert-success"><%= flash[:notice] %></p>
+  <% end %>
+
+<script>
+	$(function() {
+    $.fn.showField = function() {
+        var selectVal = document.getElementById(this.val() + 'Div');
+        return this.each(function() {
+            $(selectVal).show().siblings('div').hide();
+        });
+    };    
+    $('select#searchOptions').change(function() {
+        $(this).showField();
+    });
+});
+</script>
+Search by:
+<select id="searchOptions">
+    <option value="blank" id="blank" onclick="show(this)">Sort by:</option>
+    <option value="subject" id="imaging" onclick="show(this)">Subject</option>
+    <option value="lecturer" id="inventory" onclick="show(this)">Lecturer</option>
+</select>
+
+<div id="subjectDiv" style="display: none;">
+<h1>Votes</h1>
+<%= form_tag url_for(:controller => 'ovs_core', :action =>'choose_question', :button => "subject") do %>
+	<%= collection_select(:subject, :subject, Subject.all, :id, :title) %>
+	<%= submit_tag %>
+<% end %>
+</div>
+
+<div id="lecturerDiv" style="display: none;">
+<h1>Votes</h1>
+<%= form_tag url_for(:controller => 'ovs_core', :action =>'choose_question', :button => "lecturer") do %>
+	<%= collection_select(:lecturer, :lecturer, Lecturer.all, :id, :email) %>
+	<%= submit_tag %>
+<% end %>
+
+</div>
+</div>

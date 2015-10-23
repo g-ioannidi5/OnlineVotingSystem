@@ -1,0 +1,9 @@
+<% @responses = Question.where("id = 5") %>
+<% @responses.each do |response| %>
+	<%= response.response1 %>
+	<%= response.response2 %>
+	<%= response.response3 %>
+	<%= response.response4 %>
+	<%= response.response5 %>
+	<%= response.response6 %>
+<%end%>

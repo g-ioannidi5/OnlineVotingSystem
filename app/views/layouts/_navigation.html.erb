@@ -1,0 +1,94 @@
+<nav>
+ <div class="navbar navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container">
+      <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="brand" href="<%=root_path%>"><%= image_tag"logo.png", :id=>"logo"%></a>
+      <div class="nav-collapse collapse">
+        <ul class="nav leftbar">
+          <li class="active"><%=link_to "Home", root_path%></li>                
+          <li><%=link_to "Polls", polls_path%></li>
+          <li><%=link_to "Questions", questions_path%></li> 
+          <% if lecturer_signed_in? %>
+            <li><%=link_to "Subjects", subjects_path%></li>
+            <li><%=link_to "Access Codes", access_codes_path%></li>
+          <% end %>
+
+          <% if student_signed_in? %>
+            <li><%=link_to "Vote", vote_path%></li>
+            <li><%=link_to "History", history_path%></li>
+          <% end%>
+
+       
+          <li><%=link_to "About", about_path%></li>
+        </ul>
+        <ul class= "nav pull-right rightbar">   
+          <li class="divider-vertical"></li>  
+          <li class="dropdown">
+           <% if lecturer_signed_in? %>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%=current_lecturer.email%><b class="caret" ></b></a>
+            <% else %>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lecturer<b class="caret" ></b></a>
+            <% end %>
+            <ul class="dropdown-menu">
+              <% if lecturer_signed_in? %>
+                <li>
+                  <%= link_to('Sign out', destroy_lecturer_session_path, :method => :delete) %>        
+                </li>
+              <% else %>
+                <li>
+                  <%= link_to('Sign in', new_lecturer_session_path)  %>  
+                </li>
+              <% end %>
+              <% if lecturer_signed_in? %>
+                <li>
+                  <%= link_to('Edit registration', edit_lecturer_registration_path) %>
+                </li>
+              <% else %>
+                <li>
+                  <%= link_to('Sign up', new_lecturer_registration_path)  %>
+                </li>
+              <% end %>
+            </ul>
+          </li>
+        </ul>
+        <ul class= "nav pull-right push-center rightbar">   
+          <li class="divider-vertical"></li>  
+          <li class="dropdown">
+          <% if student_signed_in? %>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%=current_student.email%><b class="caret" ></b></a>
+           <% else %>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Student<b class="caret" ></b></a>
+            <% end %>
+            <ul class="dropdown-menu">
+              <% if student_signed_in? %>
+                <li>
+                  <%= link_to('Sign out', destroy_student_session_path, :method => :delete) %>        
+                </li>
+              <% else %>
+                <li>
+                  <%= link_to('Sign in', new_student_session_path)  %>  
+                </li>
+              <% end %>
+              <% if student_signed_in? %>
+                <li>
+                  <%= link_to('Edit registration', edit_student_registration_path) %>
+                </li>
+              <% else %>
+                <li>
+                  <%= link_to('Sign up', new_student_registration_path)  %>
+                </li>
+              <% end %>
+            </ul>
+          </li>
+        </ul> 
+      </div>
+    </div>
+  </div>
+ </div> 
+</nav> 
+ 

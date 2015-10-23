@@ -1,0 +1,64 @@
+
+<% if flash[:alert] %>
+    <p class="alert alert-danger"><%= flash[:alert] %></p>
+  <% end %>
+  <% if flash[:notice] %>
+    <p class="alert alert-success"><%= flash[:notice] %></p>
+  <% end %>
+  <h1>Listing Questions</h1>
+    <div class="table-responsive">
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Question</th>
+        <th>Answer1</th>
+        <th>Answer2</th>
+        <th>Answer3</th>
+        <th>Answer4</th>
+        <th>Answer5</th>
+        <th>Answer6</th>
+        <th>response1</th>
+        <th>response2</th>
+        <th>response3</th>
+        <th>response4</th>
+        <th>response5</th>
+        <th>response6</th>
+        <th>Total Responses</th>
+        <th>Status</th>
+        <th>Poll</th>
+        <th>Poll id</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @questions.each do |question| %>
+        <tr>
+          <td><%= question.id %></td>
+          <td><%= question.question %></td>
+          <td><%= question.answer1 %></td>
+          <td><%= question.answer2 %></td>
+          <td><%= question.answer3 %></td>
+          <td><%= question.answer4 %></td>
+          <td><%= question.answer5 %></td>
+          <td><%= question.answer6 %></td>
+          <td><%= question.response1 %></td>
+          <td><%= question.response2 %></td>
+          <td><%= question.response3 %></td>
+          <td><%= question.response4 %></td>
+          <td><%= question.response5 %></td>
+          <td><%= question.response6 %></td>
+          <td><%= question.total_responses %></td>
+          <td><%= question.poll.name %></td>
+          <td><%= question.poll.id %></td>
+          <% if question.status == 1 %>
+            <td> On </td>
+          <% elsif question.status == 0 || question.status = nil || question.status = ""%>
+            <td> Off </td>
+          <% end %>
+      <% end %>
+
+</tr>
+</tbody>
+      </table>
+    </div>

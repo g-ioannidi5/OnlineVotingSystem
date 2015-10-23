@@ -1,0 +1,55 @@
+  <% if flash[:alert] %>
+    <p class="alert alert-danger"><%= flash[:alert] %></p>
+  <% end %>
+  <% if flash[:notice] %>
+    <p class="alert alert-success"><%= flash[:notice] %></p>
+  <% end %>
+<% if @questions.status == 1 %>
+<script type="text/javascript" language="javascript">
+    var myRefreshTimeout;
+
+    /** Function to refresh the page at specified interval. **/
+    function startRefresh(refreshPeriod) {
+        myRefreshTimeout = setTimeout("window.location.reload();",refreshPeriod);
+    }
+
+    /** Function to stop refreshing the page. **/
+    function stopRefresh() {
+        clearTimeout(myRefreshTimeout);
+        window.location.hash = 'stop' 
+    }
+</script>
+
+ <div class="btn-group">
+          <a class="btn btn-success" onclick="startRefresh()" id="start">Start Refresh</a>
+          <a class="btn btn-danger" onclick="stopRefresh()" id="stop">Stop Refresh</a>
+          <p id="console"></p>
+      </div>
+
+<script type="text/javascript">
+    window.onload = startRefresh(10000);
+</script>
+<% else %>
+    <script type="text/javascript">
+    window.onload = stopRefresh();
+</script>
+<strong>The poll is now closed</strong>
+<% end %>
+
+
+   <%= high_chart("my_id", @chart) %>
+	<p> Toal Responses <%= @total_responses %> </p>
+
+<% if student_signed_in? %>
+<%if @poll_questions[@students.current_question.to_i] != nil%>
+			<%= form_tag url_for(:controller => 'questions', :action => 'view_questions', poll_param: @questions.poll_id) do %>
+            	<input type="Submit" name="button" id="Next" value="Next" class="button"/>
+        	<% end %>
+<% else %>
+<%= form_tag url_for(:controller => 'questions', :action => 'final_page', poll_param: @questions.poll_id) do %>
+            	<input type="Submit" name="button" id="Next" value="Next" class="button"/>
+        	<% end %>
+<%end%>
+<%else%>
+<%= link_to "Back", questions_path %>
+<%end%>

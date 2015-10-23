@@ -1,0 +1,419 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require normalize
+ *= require ovs_core
+ *= require scaffolds
+ *= require_self
+ *= require_tree .
+
+ */
+
+
+#vote{
+    width: 250px;
+    
+    margin: 50px auto;
+    padding: 20px;
+    right: 12px;
+
+    border: 1px solid #ccc;
+    border-radius: 3px;  
+}
+
+#inner{
+    right:  120px;
+}
+
+#vote::before, 
+#vote::after {
+    content: "";
+    position: absolute;
+    bottom: -3px;
+    left: 12px;
+    right: 2px;
+    top: 0;
+    z-index: -1;
+    background: #fff;
+    border: 1px solid #ccc;         
+}
+
+#vote::after {
+    left: 4px;
+    right: 4px;
+    bottom: -5px;
+    z-index: -2;
+    box-shadow: 0 8px 8px -5px rgba(0,0,0,.3);
+}
+
+#vote h1 {
+    position: relative;
+    font: italic 1em/3.5em 'trebuchet MS',Arial, Helvetica;
+    color: #999;
+    text-align: center;
+    margin: 0 0 20px;
+}
+
+#vote h1::before,
+#vote h1::after{
+    content:'';
+    position: absolute;
+    border: 1px solid rgba(0,0,0,.15);
+    top: 10px;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+}
+
+#vote h1::after{
+    top: 0;
+    bottom: 0;
+    left: 10px;
+    right: 10px;
+}
+
+::-webkit-input-placeholder {
+   color: #bbb;
+}
+
+:-moz-placeholder {
+   color: #bbb;
+}                       
+
+.placeholder{
+    color: #bbb; /* polyfill */
+}       
+
+#vote input{
+    margin: 5px 0;
+    padding: 15px;
+    width: 100%;
+    *width: 518px; /* IE7 and below */
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 3px; 
+     height: 100%;
+}
+
+#vote input:focus{
+        outline: 0;
+        border-color: #aaa;
+    box-shadow: 0 2px 1px rgba(0, 0, 0, .3) inset;
+     height: 100%;
+}       
+
+#vote button{
+    margin: 20px 0 0 0;
+    padding: 15px 8px;          
+    width: 100%;
+    cursor: pointer;
+    border: 1px solid #2493FF;
+    overflow: visible;
+    display: inline-block;
+    color: #fff;
+    font: bold 1.4em arial, helvetica;
+    text-shadow: 0 -1px 0 rgba(0,0,0,.4);         
+    background-color: #2493ff;
+    background-image: linear-gradient(top, rgba(255,255,255,.5), rgba(255,255,255,0)); 
+    transition: background-color .2s ease-out;
+    border-radius: 3px;
+    box-shadow: 0 2px 1px rgba(0, 0, 0, .3),
+                0 1px 0 rgba(255, 255, 255, .5) inset;                               
+}
+
+#vote button:hover{
+    background-color: #7cbfff;
+        border-color: #7cbfff;
+}
+
+#vote button:active{
+    position: relative;
+    top: 3px;
+    text-shadow: none;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, .3) inset;
+}
+
+
+
+
+
+
+
+#center{
+    width: 250px;
+    
+    margin: 50px auto;
+    padding: 20px;
+    
+
+    border: 1px solid #ccc;
+    border-radius: 3px;  
+}
+#signup {
+    width: 250px;
+    margin: 100px auto 50px auto;
+    padding: 20px;
+    box-sizing: border-box;
+    background: #fff url(data:image/png;base64,iVBORw0K[...]CYII=);
+    border: 1px solid #ccc;
+    border-radius: 3px;  
+}
+
+#center::before, 
+#center::after {
+    content: "";
+    position: absolute;
+    bottom: -3px;
+    left: 2px;
+    right: 2px;
+    top: 0;
+    z-index: -1;
+    background: #fff;
+    border: 1px solid #ccc;         
+}
+
+#center::after {
+    left: 4px;
+    right: 4px;
+    bottom: -5px;
+    z-index: -2;
+    box-shadow: 0 8px 8px -5px rgba(0,0,0,.3);
+}
+
+#center h1 {
+    position: relative;
+    font: italic 1em/3.5em 'trebuchet MS',Arial, Helvetica;
+    color: #999;
+    text-align: center;
+    margin: 0 0 20px;
+}
+
+#center h1::before,
+#center h1::after{
+    content:'';
+    position: absolute;
+    border: 1px solid rgba(0,0,0,.15);
+    top: 10px;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+}
+
+#center h1::after{
+    top: 0;
+    bottom: 0;
+    left: 10px;
+    right: 10px;
+}
+
+::-webkit-input-placeholder {
+   color: #bbb;
+}
+
+:-moz-placeholder {
+   color: #bbb;
+}                       
+
+.placeholder{
+    color: #bbb; /* polyfill */
+}       
+
+#center input{
+    margin: 5px 0;
+    padding: 15px;
+    width: 100%;
+    *width: 518px; /* IE7 and below */
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 3px; 
+     height: 100%;
+}
+
+#center input:focus{
+        outline: 0;
+        border-color: #aaa;
+    box-shadow: 0 2px 1px rgba(0, 0, 0, .3) inset;
+     height: 100%;
+}       
+
+#center button{
+    margin: 20px 0 0 0;
+    padding: 15px 8px;          
+    width: 100%;
+    cursor: pointer;
+    border: 1px solid #2493FF;
+    overflow: visible;
+    display: inline-block;
+    color: #fff;
+    font: bold 1.4em arial, helvetica;
+    text-shadow: 0 -1px 0 rgba(0,0,0,.4);         
+    background-color: #2493ff;
+    background-image: linear-gradient(top, rgba(255,255,255,.5), rgba(255,255,255,0)); 
+    transition: background-color .2s ease-out;
+    border-radius: 3px;
+    box-shadow: 0 2px 1px rgba(0, 0, 0, .3),
+                0 1px 0 rgba(255, 255, 255, .5) inset;                               
+}
+
+#center button:hover{
+    background-color: #7cbfff;
+        border-color: #7cbfff;
+}
+
+#center button:active{
+    position: relative;
+    top: 3px;
+    text-shadow: none;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, .3) inset;
+}
+
+#signup::before, 
+#signup::after {
+    content: "";
+    position: absolute;
+    bottom: -3px;
+    left: 2px;
+    right: 2px;
+    top: 0;
+    z-index: -1;
+    background: #fff;
+    border: 1px solid #ccc;         
+}
+
+#signup::after {
+    left: 4px;
+    right: 4px;
+    bottom: -5px;
+    z-index: -2;
+    box-shadow: 0 8px 8px -5px rgba(0,0,0,.3);
+}
+
+#signup h1 {
+    position: relative;
+    font: italic 1em/3.5em 'trebuchet MS',Arial, Helvetica;
+    color: #999;
+    text-align: center;
+    margin: 0 0 20px;
+}
+
+#signup h1::before,
+#signup h1::after{
+    content:'';
+    position: absolute;
+    border: 1px solid rgba(0,0,0,.15);
+    top: 10px;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+}
+
+#signup h1::after{
+    top: 0;
+    bottom: 0;
+    left: 10px;
+    right: 10px;
+}
+
+::-webkit-input-placeholder {
+   color: #bbb;
+}
+
+:-moz-placeholder {
+   color: #bbb;
+}                       
+
+.placeholder{
+    color: #bbb; /* polyfill */
+}       
+
+#signup input{
+    margin: 5px 0;
+    padding: 15px;
+    width: 100%;
+    *width: 518px; /* IE7 and below */
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+     height: 100%;
+}
+
+#signup input:focus{
+        outline: 0;
+        border-color: #aaa;
+    box-shadow: 0 2px 1px rgba(0, 0, 0, .3) inset;
+    height: 100%;
+}       
+
+#signup button{
+    margin: 20px 0 0 0;
+    padding: 15px 8px;          
+    width: 100%;
+    cursor: pointer;
+    border: 1px solid #2493FF;
+    overflow: visible;
+    display: inline-block;
+    color: #fff;
+    font: bold 1.4em arial, helvetica;
+    text-shadow: 0 -1px 0 rgba(0,0,0,.4);         
+    background-color: #2493ff;
+    background-image: linear-gradient(top, rgba(255,255,255,.5), rgba(255,255,255,0)); 
+    transition: background-color .2s ease-out;
+    border-radius: 3px;
+    box-shadow: 0 2px 1px rgba(0, 0, 0, .3),
+                0 1px 0 rgba(255, 255, 255, .5) inset;                               
+}
+
+#signup button:hover{
+    background-color: #7cbfff;
+        border-color: #7cbfff;
+}
+
+#signup button:active{
+    position: relative;
+    top: 3px;
+    text-shadow: none;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, .3) inset;
+}
+
+/* 
+Generic Styling, for Desktops/Laptops 
+*/
+table { 
+  width: 100%; 
+  border-collapse: collapse; 
+}
+/* Zebra striping */
+tr:nth-of-type(odd) { 
+  background: #eee; 
+}
+th { 
+  background: #333; 
+  color: white; 
+  font-weight: bold; 
+}
+td, th { 
+  padding: 6px; 
+  border: 1px solid #ccc; 
+  text-align: left; 
+}
+
+@media (max-width: 767px) {
+  .table-responsive {
+    width: 100%;
+    margin-bottom: 15px;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    -webkit-overflow-scrolling: touch;
+  }
+    
+}

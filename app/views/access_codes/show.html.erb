@@ -1,0 +1,26 @@
+ <div  id = "center">
+<% if flash[:alert] %>
+    <p class="alert alert-danger"><%= flash[:alert] %></p>
+  <% end %>
+  <% if flash[:notice] %>
+    <p class="alert alert-success"><%= flash[:notice] %></p>
+  <% end %>
+	<p>
+  		<strong>Code:</strong>
+  		<%= @access_code.code %>
+	</p>
+	<p>
+  		<strong>Valid until:</strong>
+  		<%= @access_code.valid_until %>
+	</p>
+	<p>
+  		<strong>Lecturer:</strong>
+  		<%= @access_code.lecturer.email %>
+	</p>
+	<p>
+  		<strong>Subject:</strong>
+  		<%= @access_code.subject.title %>
+	</p>
+	<%= link_to 'Edit', edit_access_code_path(@access_code) %> |
+	<%= link_to 'Back', access_codes_path %>
+</div>

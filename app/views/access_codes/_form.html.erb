@@ -1,0 +1,52 @@
+<%= form_for(@access_code) do |f| %>
+  <% if @access_code.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@access_code.errors.count, "error") %> prohibited this access_code from being saved:</h2>
+      <ul>
+        <% @access_code.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %> 
+      </ul> 
+    </div>
+  <% end %>
+
+  <% if defined?(@access_code_edit) %>
+    <% if @access_code_edit.code != nil %>
+      <div class="field">
+        <%= f.label :code %><br>
+        <%= f.select(:code, [@access_code_edit.code]) %>
+      </div>
+
+    <% else %>
+      <div class="field">
+        <%= f.label :code %><br>
+        <%= f.select(:code, codes_for_select) %>
+      </div>
+    <% end %>
+
+  <% else %>
+    <div class="field">
+      <%= f.label :code %><br>
+      <%= f.select(:code, codes_for_select) %>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :valid_until %><br>
+    <%= f.date_select :valid_until %>
+  </div>
+  
+  <div class="field" style="display: none;">
+    <%= f.label :lecturer_id %><br>
+    <%= f.collection_select(:lecturer_id, [current_lecturer], :id, :email) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :subject_id %><br>
+    <%= f.collection_select(:subject_id, Subject.where('lecturer_id = ?', current_lecturer.id), :id, :title) %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

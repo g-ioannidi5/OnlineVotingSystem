@@ -1,0 +1,24 @@
+<h1>Listing Polls</h1>
+<div class="table-responsive">
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Poll</th>
+        <th>Question</th>
+        <th>Answer</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @histories.each do |history| %>
+        <tr>
+          <td><%= history.id %></td>
+          <td><%= history.poll.name %></td>
+          <td><%= history.question.question %></td>
+          <td><%= history.answer %></td>
+      <%end %>
+        </tr>
+    </tbody>
+  </table>
+</div>

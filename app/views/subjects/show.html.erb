@@ -1,0 +1,29 @@
+  <% if flash[:alert] %>
+    <p class="alert alert-danger"><%= flash[:alert] %></p>
+  <% end %>
+  <% if flash[:notice] %>
+    <p class="alert alert-success"><%= flash[:notice] %></p>
+  <% end %>
+<% if lecturer_signed_in? %>
+
+	<p>
+  		<strong>Code:</strong>
+  		<%= @subject.code %>
+	</p>
+
+	<p>
+  		<strong>Title:</strong>
+  		<%= @subject.title %>
+	</p>
+
+	<p>
+  		<strong>Lecturer:</strong>
+  		<%= @subject.lecturer.email %>
+	</p>
+	<%= link_to 'Edit', edit_subject_path(@subject) %> |
+	<%= link_to 'Back', subjects_path %>
+<% else %>
+	<p>Sign in or sign up to Create a Poll</p>
+    <button>  <%= link_to('Sign in', new_lecturer_session_path)  %> </button>
+    <button> <%= link_to('Sign up', new_lecturer_registration_path)  %> </button>
+<% end %>

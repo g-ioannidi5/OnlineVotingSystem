@@ -1,0 +1,45 @@
+<!-- Function to check if the event date has passed and if the event it is in the current year -->
+   <% @questions = Question.where("poll_id  = ?", :poll_id) %>
+    <!-- function to read the newsletters from database -->
+    <% for question in @questions %>
+    <p class="alert alert-error"><%= notice %></p>
+    <p>
+      <strong>Question:</strong>
+      <%= question.question %>
+    </p>
+
+    <p>
+      <strong>Answer1:</strong>
+      <%= question.answer1 %>
+    </p>
+
+    <p>
+      <strong>Answer2:</strong>
+      <%= question.answer2 %>
+    </p>
+
+    <p>
+      <strong>Answer3:</strong>
+      <%= question.answer3 %>
+    </p>
+
+    <p>
+      <strong>Answer4:</strong>
+      <%= question.answer4 %>
+    </p>
+
+    <p>
+      <strong>Answer5:</strong>
+      <%= question.answer5 %>
+    </p>
+
+    <p>
+      <strong>Answer6:</strong>
+      <%= question.answer6 %>
+    </p>
+
+    <p>
+      <strong>Poll:</strong>
+      <%= question.poll.name %>
+    </p>
+  <% end %>

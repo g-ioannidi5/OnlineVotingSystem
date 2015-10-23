@@ -1,0 +1,51 @@
+<div  id = "signup">
+<% if flash[:alert] %>
+    <p class="alert alert-danger"><%= flash[:alert] %></p>
+  <% end %>
+  <% if flash[:notice] %>
+    <p class="alert alert-success"><%= flash[:notice] %></p>
+  <% end %>
+<p>
+  <strong>Name:</strong>
+  <%= @poll.name %>
+</p>
+
+<p>
+  <strong>Lecturer:</strong>
+  <%= @poll.lecturer.email %>
+</p>
+
+<p>
+  <strong>Subject:</strong>
+  <%= @poll.subject.title %>
+</p>
+
+<% if @poll.access_code != nil %>
+  <p>
+  <strong>AccessCode:</strong>
+  <%= @poll.access_code %>
+</p>
+
+<p>
+  <strong>Lecturer:</strong>
+  <% @lecturer = Lecturer.where('id = ?', @poll.access_code_lecturer).first %>
+  <%= @lecturer.email %>
+</p>
+<% end %>
+
+<p>
+  <strong>Date:</strong>
+  <%= @poll.poll_date %>
+</p>
+<% if defined?(@access_code.code) %>
+	<% if @poll.access_code == @access_code.code %>
+    	<%= link_to 'Edit', edit_poll_path(@poll) %> |
+		<%= link_to 'Back', polls_path %>
+    <% end %>
+<% elsif lecturer_signed_in? %>
+    <% if @poll.lecturer_id == current_lecturer.id || @poll.access_code_lecturer ==  current_lecturer.id %>
+    	<%= link_to 'Edit', edit_poll_path(@poll) %> |
+		<%= link_to 'Back', polls_path %>
+    <% end %>
+<% end %>
+</div>

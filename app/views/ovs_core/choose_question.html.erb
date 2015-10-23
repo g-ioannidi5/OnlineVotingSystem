@@ -1,0 +1,7 @@
+<div  id = "signup">
+
+<%= form_tag url_for(:controller => 'ovs_core', :action =>'view_questions', :button => 'first') do %>
+	<%= collection_select(:poll, :poll_id, @polls_to_display, :id, :name) %>
+	<%= submit_tag %>
+<% end %>
+</div>
