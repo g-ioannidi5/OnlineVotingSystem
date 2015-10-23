@@ -1,15 +1,17 @@
-# Load the Rails application.
+# Load the rails application
 require File.expand_path('../application', __FILE__)
 
-# Initialize the Rails application.
-Rails.application.initialize!
+# Initialize the rails application
+Freelanceful::Application.initialize!
 
+# Configuration for using SendGrid on Heroku
+ActionMailer::Base.delivery_method = :smtp
 ActionMailer::Base.smtp_settings = {
-  :address              => "smtp.sendgrid.net",
-  :domain               => 'onlinevotingsystem.net',
-  :user_name            => ENV['app42949118@heroku.com'],
-  :password             => ENV['6xtdktpt6235'],
-  :authentication       => "plain",
+  :user_name => "app42949118@heroku.com",
+  :password => "6xtdktpt6235",
+  :domain => "staging.freelanceful.com",
+  :address => "smtp.sendgrid.net",
+  :port => 587,
+  :authentication => :plain,
   :enable_starttls_auto => true
 }
-ActionMailer::Base.default_url_options = { host: 'onlinevotingsystem.net' }
