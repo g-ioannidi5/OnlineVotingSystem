@@ -1,6 +1,6 @@
 # class LecturerRegistrationsController < Devise::RegistrationsController
 
-#   def create
+   def create
 #     email = params[:lecturer][:email]
 #     whitelist = Whitelist.where('email = ?', email).first
 
@@ -11,4 +11,4 @@
 #          redirect_to root_path
 #      end
 #   end
-# end
+ end
