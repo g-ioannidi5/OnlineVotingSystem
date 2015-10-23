@@ -181,7 +181,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_median (~> 0.1.0)
-  bootstrap-sass (~> 2.3.2)
+  bootstrap-sass
   byebug
   coffee-rails (~> 4.1.0)
   devise
