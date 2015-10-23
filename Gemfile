@@ -54,6 +54,8 @@ gem 'active_median', '~> 0.1.0'
 gem 'puma'
 gem 'lazy_high_charts'
 gem 'redis'
-gem 'rails_12factor', group: :production
+group :production do
+  gem 'rails_12factor'
+end
 end
 
