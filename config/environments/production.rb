@@ -76,13 +76,13 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-config.action_mailer.default_url_options = { :host => 'onlinevotingsystem.net' }
+config.action_mailer.default_url_options = { :host => 'heroku.com' }
 ActionMailer::Base.smtp_settings = {
   :address        => "smtp.sendgrid.net",
   :port           => "25",
   :authentication => :plain,
   :user_name      => ENV['app42949118@heroku.com'],
   :password       => ENV['6xtdktpt6235'],
-  :domain         => ENV['onlinevotingsystem.net']
+  :domain         => ENV['heroku.com']
 }
 end
