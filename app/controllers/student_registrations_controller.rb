@@ -1,6 +1,6 @@
-# class StudentRegistrationsController < Devise::RegistrationsController
+ class StudentRegistrationsController < Devise::RegistrationsController
 
-   def create
+#   def create
 #     email = params[:student][:email]
 #         if email =~ /[a-z]{2}[0-9]{5}@surrey.ac.uk/
 #             flash[:notice] = "Welcome! You have signed up successfully."
