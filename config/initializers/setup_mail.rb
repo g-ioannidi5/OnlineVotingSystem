@@ -1,5 +1,5 @@
 ActionMailer::Base.delivery_method = :smtp
-	AActionMailer::Base.smtp_settings = {
+	ActionMailer::Base.smtp_settings = {
   :address        => "smtp.sendgrid.net",
   :port           => "25",
   :authentication => :plain,
