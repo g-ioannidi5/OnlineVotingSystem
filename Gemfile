@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+gem 'sse-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use postgresql as the database for Active Record
@@ -17,6 +17,7 @@ gem 'coffee-rails', '~> 4.1.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
+gem 'jquery-turbolinks'
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
@@ -43,10 +44,10 @@ group :development, :test do
   gem 'spring'
 
 group :development, :production, :test do
-  gem 'devise'
+  gem 'devise', :git => 'https://github.com/plataformatec/devise.git', :branch => 'lm-rails-4-2'
 end
   #Boostrap 2.3.2
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '~> 2.3.2'
 gem "nested_form", :git => "git://github.com/ryanb/nested_form.git"
 gem 'hirb'
 gem 'groupdate', '~> 2.1.1'

@@ -42,10 +42,6 @@
       <%= f.label :answer6 %><br>
       <%= f.text_field :answer6 %>
     </div>
-     <div class="field">
-        <%= f.label :chart_style %><br>
-        <%= f.select(:chart_style, ["Pie Chart", "Bar Chart"]) %>
-      </div>
     <% if lecturer_signed_in? %>
       <div class="field" style="display: none;">
         <%= f.label :lecturer_id %><br>

@@ -121,8 +121,6 @@ class QuestionsController < ApplicationController
   def view_responses
     @title = "Results"
     @data = []
-    @labels = []
-    @responses = []
     require 'lazy_high_charts'
     question_id = params[:question_param]
     poll_id = params[:poll_param]
@@ -146,57 +144,22 @@ class QuestionsController < ApplicationController
 
     if @label1 != ""
       @data.push([@label1,   @response1])
-      @labels.push(@label1)
-      @responses.push(@response1)
     end
     if @label2 != ""
       @data.push([@label2,   @response2])
-      @labels.push(@label2)
-      @responses.push(@response2)
     end
     if @label3 != ""
       @data.push([@label3,   @response3])
-      @labels.push(@label3)
-      @responses.push(@response3)
     end
     if @label4 != ""
       @data.push([@label4,   @response4])
-      @labels.push(@label4)
-      @responses.push(@response4)
     end
     if @label5 != ""
       @data.push([@label5,   @response5])
-      @labels.push(@label5)
-      @responses.push(@response5)
     end
   if @label6 != ""
       @data.push([@label6,   @response6])
-      @labels.push(@label6)
-      @responses.push(@response6)
     end
-
-if @questions.chart_style == "Bar Chart"
-  @chart = LazyHighCharts::HighChart.new('column') do |f|
-           f.series(:name=>'Answer',:data=> @data)      
-           f.title({ :text=>"Answer"})
-           f.legend({:align => 'right', 
-                    :x => -100, 
-                    :verticalAlign=>'top',
-                    :y=>20,
-                    :floating=>"true",
-                    :backgroundColor=>'#FFFFFF',
-                    :borderColor=>'#CCC',
-                    :borderWidth=>1,
-                    :shadow=>"false"
-                    })
-           f.options[:chart][:defaultSeriesType] = "column"
-           f.options[:xAxis] = {:plot_bands => "none", :title=>{:text=>"Answers"}, :categories => ["1","2","3","4","5","6",]}
-           f.options[:yAxis][:title] = {:text=>"Responses"}
-           
-            
-        end
-
-else
 
   @chart = LazyHighCharts::HighChart.new('pie') do |f|
     f.chart({:defaultSeriesType=>"pie" , :margin=> [50, 200, 60, 170]} )
@@ -220,7 +183,6 @@ else
       }
     })
   end
-end
   @total_responses = @questions.total_responses.to_i
 end
 
@@ -430,6 +392,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
-      params.require(:question).permit(:question, :answer1, :answer2, :answer3, :answer4, :answer5, :answer6, :poll_id, :lecturer_id, :access_code, :chart_style)
+      params.require(:question).permit(:question, :answer1, :answer2, :answer3, :answer4, :answer5, :answer6, :poll_id, :lecturer_id, :access_code)
     end
   end
