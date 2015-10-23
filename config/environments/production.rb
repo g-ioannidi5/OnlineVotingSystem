@@ -83,6 +83,6 @@ ActionMailer::Base.smtp_settings = {
   :authentication => :plain,
   :user_name      => ENV['app42949118@heroku.com'],
   :password       => ENV['6xtdktpt6235'],
-  :domain         => ENV['onlinevotingsystem.net']
+  :domain         => ENV['onlinevotingsystem.herokuapp.com']
 }
 end
