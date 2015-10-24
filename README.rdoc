@@ -1,3 +1,5 @@
+					ONLINE VOTING SYSTEM
+
 For many years voting systems have been used in order to determine the opinion of a subtraction of people. The political elections (also often referred to “electoral systems”) are part of the general term of voting systems. In addition, many teachers/lecturers use voting systems to determine how students understand parts of the lectures by adding questions and analyze the responses from the students.
 
 Ever since the Digital Revolution, people increasingly use technology and it has become an essential part of our lives. Naturally, voting systems turn to online voting systems. The absence of need for any external devices except the mobile phone, tablet, laptop device, desktop computer or any other device with access to the Internet and a browser application makes online voting systems an ideal way to help teachers/lecturers to monitor the understanding of their students and make the lecture more interesting at the same time.
