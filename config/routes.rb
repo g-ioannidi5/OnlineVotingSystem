@@ -8,8 +8,8 @@ Rails.application.routes.draw do
 
   resources :polls
 
-  devise_for :students, controllers: { registrations: "student_registrations" }
-    devise_for :lecturers, controllers: { registrations: "lecturer_registrations" }
+  devise_for :students, controllers: { confirmations: 'confirmations' }
+    devise_for :lecturers, controllers: { confirmations: 'confirmations' }
   root :to  => 'ovs_core#index'
   match 'about', :to => 'ovs_core#about', via: :get
   match 'vote', :to => 'ovs_core#vote', via: :get
