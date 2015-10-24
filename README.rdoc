@@ -1,28 +1,7 @@
-== README
+For many years voting systems have been used in order to determine the opinion of a subtraction of people. The political elections (also often referred to “electoral systems”) are part of the general term of voting systems. In addition, many teachers/lecturers use voting systems to determine how students understand parts of the lectures by adding questions and analyze the responses from the students.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Ever since the Digital Revolution, people increasingly use technology and it has become an essential part of our lives. Naturally, voting systems turn to online voting systems. The absence of need for any external devices except the mobile phone, tablet, laptop device, desktop computer or any other device with access to the Internet and a browser application makes online voting systems an ideal way to help teachers/lecturers to monitor the understanding of their students and make the lecture more interesting at the same time.
 
-Things you may want to cover:
+This dissertation emphasizes on the implementation of such web application, which can work effectively with any device, providing charts from the responses of student answering questions, which can be downloaded as various file-types.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+The produced system is developed using Agile methodology and it is implemented as an open source application. It is written with ruby on rails programming language using Model-View-Controller (MVC) system architecture and SQLite for the design and maintenance of the database. The client side was implemented using HTML5, CSS3 and JavaScript. The authorisation/authentication system was built with the help of devise gem/library and the charts were produced using the lazy_high_charts gem/library.
